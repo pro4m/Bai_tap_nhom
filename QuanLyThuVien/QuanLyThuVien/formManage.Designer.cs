@@ -69,6 +69,9 @@
             this.qldg_radioSua = new System.Windows.Forms.RadioButton();
             this.qldg_radioThem = new System.Windows.Forms.RadioButton();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.QLMT_radio_tra = new System.Windows.Forms.RadioButton();
+            this.QLMT_radio_muon = new System.Windows.Forms.RadioButton();
             this.panel4 = new System.Windows.Forms.Panel();
             this.qlmt_listChon = new System.Windows.Forms.ListBox();
             this.button2 = new System.Windows.Forms.Button();
@@ -88,13 +91,10 @@
             this.qlmt_boxDG = new System.Windows.Forms.TextBox();
             this.qlmt_butOK = new System.Windows.Forms.Button();
             this.tab_TTMS = new System.Windows.Forms.TabPage();
-            this.panel8 = new System.Windows.Forms.Panel();
-            this.QLMT_radio_muon = new System.Windows.Forms.RadioButton();
-            this.QLMT_radio_tra = new System.Windows.Forms.RadioButton();
+            this.TTMS_dataView = new System.Windows.Forms.DataGridView();
             this.label13 = new System.Windows.Forms.Label();
             this.TTMS_linkTim = new System.Windows.Forms.LinkLabel();
             this.TTMS_boxID = new System.Windows.Forms.TextBox();
-            this.TTMS_dataView = new System.Windows.Forms.DataGridView();
             this.tabQLMuon.SuspendLayout();
             this.tabQLS.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -103,11 +103,11 @@
             this.qldg_panel.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.panel8.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panel5.SuspendLayout();
             this.tab_TTMS.SuspendLayout();
-            this.panel8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TTMS_dataView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -227,6 +227,7 @@
             this.panel_thongtin.Name = "panel_thongtin";
             this.panel_thongtin.Size = new System.Drawing.Size(356, 280);
             this.panel_thongtin.TabIndex = 10;
+            this.panel_thongtin.Paint += new System.Windows.Forms.PaintEventHandler(this.panel_thongtin_Paint);
             // 
             // label4
             // 
@@ -411,6 +412,7 @@
             this.qldg_butOK.TabIndex = 14;
             this.qldg_butOK.Text = "Hoàn tất";
             this.qldg_butOK.UseVisualStyleBackColor = true;
+            this.qldg_butOK.Click += new System.EventHandler(this.qldg_butOK_Click);
             // 
             // qldg_boxID
             // 
@@ -428,6 +430,7 @@
             this.qldg_linkTim.TabIndex = 11;
             this.qldg_linkTim.TabStop = true;
             this.qldg_linkTim.Text = "Tìm";
+            this.qldg_linkTim.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.qldg_linkTim_LinkClicked);
             // 
             // label8
             // 
@@ -534,6 +537,37 @@
             this.tabPage1.TabIndex = 2;
             this.tabPage1.Text = "Mượn/trả sách";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // panel8
+            // 
+            this.panel8.Controls.Add(this.QLMT_radio_tra);
+            this.panel8.Controls.Add(this.QLMT_radio_muon);
+            this.panel8.Location = new System.Drawing.Point(6, 7);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(120, 287);
+            this.panel8.TabIndex = 14;
+            // 
+            // QLMT_radio_tra
+            // 
+            this.QLMT_radio_tra.AutoSize = true;
+            this.QLMT_radio_tra.Location = new System.Drawing.Point(4, 44);
+            this.QLMT_radio_tra.Name = "QLMT_radio_tra";
+            this.QLMT_radio_tra.Size = new System.Drawing.Size(41, 17);
+            this.QLMT_radio_tra.TabIndex = 1;
+            this.QLMT_radio_tra.TabStop = true;
+            this.QLMT_radio_tra.Text = "Trả";
+            this.QLMT_radio_tra.UseVisualStyleBackColor = true;
+            // 
+            // QLMT_radio_muon
+            // 
+            this.QLMT_radio_muon.AutoSize = true;
+            this.QLMT_radio_muon.Location = new System.Drawing.Point(4, 24);
+            this.QLMT_radio_muon.Name = "QLMT_radio_muon";
+            this.QLMT_radio_muon.Size = new System.Drawing.Size(78, 17);
+            this.QLMT_radio_muon.TabIndex = 0;
+            this.QLMT_radio_muon.TabStop = true;
+            this.QLMT_radio_muon.Text = "Mượn sách";
+            this.QLMT_radio_muon.UseVisualStyleBackColor = true;
             // 
             // panel4
             // 
@@ -725,36 +759,13 @@
             this.tab_TTMS.UseVisualStyleBackColor = true;
             this.tab_TTMS.Click += new System.EventHandler(this.tab_TTMS_Click);
             // 
-            // panel8
+            // TTMS_dataView
             // 
-            this.panel8.Controls.Add(this.QLMT_radio_tra);
-            this.panel8.Controls.Add(this.QLMT_radio_muon);
-            this.panel8.Location = new System.Drawing.Point(6, 7);
-            this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(120, 287);
-            this.panel8.TabIndex = 14;
-            // 
-            // QLMT_radio_muon
-            // 
-            this.QLMT_radio_muon.AutoSize = true;
-            this.QLMT_radio_muon.Location = new System.Drawing.Point(4, 24);
-            this.QLMT_radio_muon.Name = "QLMT_radio_muon";
-            this.QLMT_radio_muon.Size = new System.Drawing.Size(78, 17);
-            this.QLMT_radio_muon.TabIndex = 0;
-            this.QLMT_radio_muon.TabStop = true;
-            this.QLMT_radio_muon.Text = "Mượn sách";
-            this.QLMT_radio_muon.UseVisualStyleBackColor = true;
-            // 
-            // QLMT_radio_tra
-            // 
-            this.QLMT_radio_tra.AutoSize = true;
-            this.QLMT_radio_tra.Location = new System.Drawing.Point(4, 44);
-            this.QLMT_radio_tra.Name = "QLMT_radio_tra";
-            this.QLMT_radio_tra.Size = new System.Drawing.Size(41, 17);
-            this.QLMT_radio_tra.TabIndex = 1;
-            this.QLMT_radio_tra.TabStop = true;
-            this.QLMT_radio_tra.Text = "Trả";
-            this.QLMT_radio_tra.UseVisualStyleBackColor = true;
+            this.TTMS_dataView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.TTMS_dataView.Location = new System.Drawing.Point(6, 61);
+            this.TTMS_dataView.Name = "TTMS_dataView";
+            this.TTMS_dataView.Size = new System.Drawing.Size(492, 226);
+            this.TTMS_dataView.TabIndex = 11;
             // 
             // label13
             // 
@@ -783,14 +794,6 @@
             this.TTMS_boxID.Size = new System.Drawing.Size(100, 20);
             this.TTMS_boxID.TabIndex = 8;
             // 
-            // TTMS_dataView
-            // 
-            this.TTMS_dataView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.TTMS_dataView.Location = new System.Drawing.Point(6, 61);
-            this.TTMS_dataView.Name = "TTMS_dataView";
-            this.TTMS_dataView.Size = new System.Drawing.Size(492, 226);
-            this.TTMS_dataView.TabIndex = 11;
-            // 
             // formManage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -813,6 +816,8 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.tabPage1.ResumeLayout(false);
+            this.panel8.ResumeLayout(false);
+            this.panel8.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.panel7.ResumeLayout(false);
@@ -821,8 +826,6 @@
             this.panel5.PerformLayout();
             this.tab_TTMS.ResumeLayout(false);
             this.tab_TTMS.PerformLayout();
-            this.panel8.ResumeLayout(false);
-            this.panel8.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TTMS_dataView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

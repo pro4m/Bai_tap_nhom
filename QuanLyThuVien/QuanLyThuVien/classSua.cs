@@ -8,17 +8,17 @@ namespace QuanLyThuVien
 {
     class classSua
     {
-        public static int Sua(classSach new_sach , string ID)
+        public static bool Sua(classSach new_sach , string ID)
         {
-            
+            bool res = connect.editSach(new_sach, ID);
             // truy vẫn csdl , sửa sách có id = ID thành new_sach thành công return 1, ko thành công return 0
-           
-            return 1; 
+            return res; 
         }
-        public static int SuaDocGia(classDocGia new_dg, string ID)
+        public static bool SuaDocGia(classDocGia new_dg, string ID)
         {
+            bool res = connect.editDocgia(new_dg, ID);
             //truy van csdl theo id roi sua,sua khong thanh cong return 0
-            return 1;
+            return res;
         }
     }
 }

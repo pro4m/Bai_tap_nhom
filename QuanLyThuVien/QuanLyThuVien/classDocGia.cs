@@ -13,6 +13,7 @@ namespace QuanLyThuVien
         public DateTime tgbd;
         public DateTime tgkt;
         public string donvi;
+        public classDocGia(){}
         public classDocGia(string _ten, DateTime _tgbd, DateTime _tgkt, string _donvi)
         {
             ten = _ten;
