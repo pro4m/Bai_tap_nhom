@@ -10,7 +10,7 @@ namespace WindowsFormsApplication2
     {
         public string Ten;
         public string nguon;
-        int sl;
+        public int sl;
         public string Loai;
         public Hang()
         {

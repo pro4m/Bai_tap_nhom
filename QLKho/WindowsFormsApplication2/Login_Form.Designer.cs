@@ -43,6 +43,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(128, 20);
             this.textBox1.TabIndex = 0;
+            this.textBox1.Text = "ncc";
             // 
             // Login_box_pword
             // 
@@ -50,6 +51,7 @@
             this.Login_box_pword.Name = "Login_box_pword";
             this.Login_box_pword.Size = new System.Drawing.Size(128, 20);
             this.Login_box_pword.TabIndex = 1;
+            this.Login_box_pword.Text = "123";
             // 
             // label1
             // 
@@ -76,7 +78,7 @@
             this.Login_but_ok.Name = "Login_but_ok";
             this.Login_but_ok.Size = new System.Drawing.Size(75, 23);
             this.Login_but_ok.TabIndex = 4;
-            this.Login_but_ok.Text = "button1";
+            this.Login_but_ok.Text = "Dang nhap";
             this.Login_but_ok.UseVisualStyleBackColor = true;
             this.Login_but_ok.Click += new System.EventHandler(this.Login_but_ok_Click);
             // 
