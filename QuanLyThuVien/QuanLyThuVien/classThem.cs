@@ -8,15 +8,16 @@ namespace QuanLyThuVien
 {
     class classThem
     {
-        public static int Them(classSach sach)
+        public static bool Them(classSach sach)
         {
-           int res = 0 ;
+           bool res = connect.insertSach(sach) ;
             //truy vấn csdl thêm sách mới, nếu thêm thành công return 1, không thành công return 0;
             return res ;
         }
-        public static int ThemDocGia(classDocGia doc_gia)
+        public static bool ThemDocGia(classDocGia doc_gia)
         {
-            int res = 0;
+            bool res ;
+            res = connect.insertDocGia(doc_gia);
             //truy van csdl them doc gia, thanh cong return 1, khong thanh cong return 0
             return res ;
         }

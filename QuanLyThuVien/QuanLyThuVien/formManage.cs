@@ -61,11 +61,10 @@ namespace QuanLyThuVien
 
         private void ok_but_Click(object sender, EventArgs e)
         {
-            int stt = 1;
+            bool stt = true;
             if (qls_radioThem.Checked) // Nếu chọn thêm sách
             {
                 stt = classThem.Them( new classSach(qls_boxTen.Text,qls_boxTG.Text,int.Parse(qls_boxSl.Text)) ) ;
-                return;
             }
 
             if (qls_radioSua.Checked)//chọn sửa sách
@@ -89,7 +88,7 @@ namespace QuanLyThuVien
                     }
                     else qls_labTT.Text = "Hết sách";
                 }
-                else stt = 0;
+                else stt = false;
             }
 
             if (qls_radioXoa.Checked) // chọn xóa sách
@@ -105,12 +104,12 @@ namespace QuanLyThuVien
                         qls_labTT.Text = "Còn sách";
                     }
                     else qls_labTT.Text = "Hết sách";
-                    //truy vấn csdl để xóa sách 
+                    stt = classXoa.XoaSach(qls_boxID.Text);
                 }
-                else stt = 0;
+                else stt = false;
                 
             }
-            if (stt == 1)
+            if (stt == true)
                 MessageBox.Show("Thành công");
             else
                 MessageBox.Show("Lỗi");
@@ -150,15 +149,32 @@ namespace QuanLyThuVien
             classDocGia dg = classTim.TimDocGia(qldg_boxID.Text);
             qldg_boxID.Text= dg.id;
             qldg_boxTen.Text = dg.ten;
-            qldg_dtBD.Value = dg.tgbd;
-            qldg_dtKT.Value = dg.tgkt;
+            qldg_dtBD.Value = Convert.ToDateTime(dg.tgbd);
+            qldg_dtKT.Value = Convert.ToDateTime(dg.tgkt);
             qldg_boxDV.Text = dg.donvi;
            // MessageBox.Show("tim doc gia");
         }
+
+        private void qldg_linkTim_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            classDocGia dg = classTim.TimDocGia(qldg_boxID.Text);
+            if (dg != null)
+            {
+                qldg_boxID.Text = dg.id;
+                qldg_boxTen.Text = dg.ten;
+                qldg_dtBD.Value = Convert.ToDateTime(dg.tgbd);
+                qldg_dtKT.Value = Convert.ToDateTime( dg.tgkt);
+                qldg_boxDV.Text = dg.donvi;
+
+            }
+            else MessageBox.Show("Không tìm thấy");
+        }
+
         public void xoa_docgia(object sender, EventArgs e)
         {
-             //xoa truc tiep tren csdl
-            //MessageBox.Show("xoa doc gia");
+            bool res = classXoa.XoaDocGia(qldg_boxID.Text);
+            if (res) MessageBox.Show("Thanh cong");
+            else MessageBox.Show("That bai");
         }
         private void qldg_radioThem_CheckedChanged(object sender, EventArgs e)
         {
@@ -168,7 +184,7 @@ namespace QuanLyThuVien
             qldg_boxDV.Enabled = true;
             qldg_dtBD.Enabled = true;
             qldg_dtKT.Enabled = true;
-            qldg_boxID.Enabled = false;
+            qldg_boxID.Enabled = true;
             qldg_butOK.Click -= them_docgia;
             qldg_butOK.Click -= xoa_docgia;
             qldg_butOK.Click -= sua_docgia;
@@ -302,6 +318,7 @@ namespace QuanLyThuVien
                 MessageBox.Show("Chưa có sách nào được chọn");
                 return;
             }
+            bool mt;
             for (int i = 0; i < qlmt_listChon.Items.Count; i++)
             {
                 string bookid = "";
@@ -314,11 +331,12 @@ namespace QuanLyThuVien
                         bookid += bookname[i];
                     }
                 if (QLMT_radio_muon.Checked)
-                {//kết nối csdl thêm 1 lượt mượn qlms_boxDG.Text và bookid
+                {
+                    mt = connect.Muon(qlmt_boxIDsach.Text, qlmt_boxIDsach.Text);
                 }
                 else
                 {
-                    //ket noi csdl xoa luot muon sach
+                    mt = connect.Tra(qlmt_boxIDsach.Text, qlmt_boxIDsach.Text);
                 }
 
                     
@@ -331,13 +349,27 @@ namespace QuanLyThuVien
         {
             //Đổ dữ liệu thông tin tất cả các lượt mượn ,trả sách vào datagridview, sắp xếp theo thời gian
             // thêm 1 cột trong data grid view chứa button, click vào button thì cập nhật lại thông tin của hàng tương ứng vào csdl
+            TTMS_dataView.DataSource = connect.LoadFullData();
         }
 
         private void TTMS_linkTim_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             string id_dg = TTMS_boxID.Text;
+            TTMS_dataView.DataSource = connect.LoadData(id_dg);
             //tìm thông tin tất cả các lượt mượn, trả sách của đg tương ứng đổ vào data
         }
+
+        private void panel_thongtin_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void qldg_butOK_Click(object sender, EventArgs e)
+        {
+         
+        }
+
+      
 
 
 

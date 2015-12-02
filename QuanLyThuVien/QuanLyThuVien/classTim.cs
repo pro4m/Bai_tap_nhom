@@ -12,12 +12,13 @@ namespace QuanLyThuVien
         {
             classSach res = null;
             //truy vấn csdl tìm sách theo id, nếu ko tìm được trả lại null
+            res = connect.FindSach(id);
             return res;
         }
         public static  classDocGia TimDocGia(string id)
         {
             classDocGia res = null;
-            //truy vấn csdl tìm sách theo id, nếu ko tìm được trả lại null
+            res = connect.FindDocgia(id);
             return res;
         }
         
